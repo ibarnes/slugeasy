@@ -1,0 +1,16 @@
+<h1>Editing locations</h1>
+
+<% form_for(@locations) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @locations %> |
+<%= link_to 'Back', location_path %>

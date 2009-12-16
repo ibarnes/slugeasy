@@ -1,0 +1,79 @@
+
+<%content_for :left_container do%>
+
+    <%if current_user == @user%>
+      <%- form_for(@post) do |f|-%>
+
+        <%= f.error_messages %>
+
+        <%=  %>
+
+        <div id="new_post_form">
+          <h3>What's your need?</h3>
+          Your Need <%= select(:post, :need, [['Ride', 1], ['Rider', 2]]) %>
+          Time <%= select :post, :time, gettimes, :size =>'6' %>
+          From <%=  text_field_with_auto_complete :post, :fr_location, {:size => 15 }, { :url => formatted_locations_path(:js), :method=>:get, :with => "'search=' + element.value"}  %>
+          <%# f.text_field :fr_location,:size => '15'%>
+          To <%= text_field_with_auto_complete :post, :to_location, {:size => 15 }, { :url => formatted_locations_path(:js), :method=>:get, :with => "'search=' + element.value"}  %>
+          <%# f.text_field :to_location,:size => '15'%>
+          <%= f.submit 'Create', :class=>'submit' %>
+        </div>
+      <%- end-%>
+    <% end%>
+    <br><br>
+
+    <%= render :partial=>'posts/posts', :locals=>{:posts=>@posts} %>
+  
+<%end%>
+
+<%content_for :right_container do%>
+  
+    <h1><%=@user.username%></h1>
+    <%= image_tag @user.gravatar_url(:size=>'100'), :align=>'top' %>
+    <br> <%if current_user%>
+      <%if current_user.relationships.find_by_follower_id(@user.id) == nil && @user != current_user%>
+
+        <%=link_to "Follow", relationships_path(:follower_id =>@user.id), :method=> :post   %><br>
+      <%else%>
+        <%=@user == current_user ? "" : "Following "%>
+      <%end%>
+    <%end%><br><br> <span>Listings</span><br>
+    <b> <%=Post.find_all_by_user_id(@user.id).size%></b><br><br>
+
+    <%if @profile.start_time && @profile.end_time%>
+      <b>Commute Time</b><br><br>
+      <%=@profile.start_time%> - <%=@profile.end_time%><br><br>
+    <%end%>
+    <span>Following</span><br><br>
+    <%  for relationship in @user.relationships  %>
+      <%=link_to image_tag(relationship.follower.gravatar_url(:size=>"40")), show_user_path(relationship.follower.username) %>
+      <%# link_to 'remove', relationship, :method => :delete %>
+    <%end%>
+    <br><br>
+
+    <span>Followers</span><br><br>
+
+    <%  for user in @user.inverse_followers %>
+      <%=link_to image_tag(user.gravatar_url(:size=>"40")), show_user_path(user.username) %>
+    <%end%>
+    <br><br>
+    <%
+      if current_user
+      if current_user == @user
+      %>
+        <span>Inbox</span><br><br>
+        <% @user.messages.each do |message| %>
+          <%=link_to User.find(message.receiver_id).username, message_path(message)%>
+          <br>
+        <%end%>
+        <br>
+        <b>Outbox</b>  <br>
+        <% @user.messages_recieved.each do |message| %>
+          <%=link_to User.find(message.sender_id).username, message_path(message)%>  <br>
+        <%end%>
+        <br><br>
+      <%end%>
+    <%end%>
+ 
+ 
+<%end%>

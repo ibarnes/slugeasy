@@ -1,0 +1,125 @@
+=  RAILS-AUTHLOGIC-RPX-SAMPLE
+
+== Purpose
+
+Demonstrates the use of Rails with Authlogic and Authlogic_RPX gems for authentication. This sample is intended as a guide for developers who are interested in using Authlogic RPX authentication in their own applications.
+
+Authlogic_RPX is an Authlogic extension library that provides support for authentication using the RPX multi-authentication service offered by JanRain. To use RPX, you must first register your application at {RPX}[http://rpxnow.com/]. A free "Basic" account is available, in addition to paid enhanced versions. All work with Authlogic_RPX.
+  
+
+== Authlogic_RPX References
+
+*	<b>Authlogic_RPX gem repo:</b> [http://github.com/tardate/authlogic_rpx]
+*	<b>Authlogic_RPX issues and feedback:</b> [http://github.com/tardate/authlogic_rpx/issues]
+
+The demonstration Rails application is where you can see Authlogic_RPX in action:
+* <b>Live Demonstration Site:</b> [http://rails-authlogic-rpx-sample.heroku.com]
+* <b>Demonstration site source repository:</b> [http://github.com/tardate/rails-authlogic-rpx-sample]
+
+== Authlogic and RPX References
+
+*	<b>Authlogic documentation:</b> [http://rdoc.info/projects/binarylogic/authlogic]
+*	<b>Authlogic repo:</b> [http://github.com/binarylogic/authlogic]
+*	<b>RPX documentation:</b> [https://rpxnow.com/docs]
+*	<b>RPX_now gem repo:</b> [http://github.com/grosser/rpx_now]
+
+
+== Using Authlogic_RPX
+
+A full explanation of how to use Authlogic_RPX is included with the gem at [http://github.com/tardate/authlogic_rpx]. It would be useful to review this information first. The remainder of this document covers specific installation instructions for the sample, and highlights how various features are implemented in the sample.
+
+
+== Features of the sample
+
+Here's a quick overview of what is in the sample, to give you an idea of where to go look and explore.
+
+The sample application is a little example of a catalogue of articles, with the ability to comment on an article. Listings of articles and comments are public, but to create or edit you must be logged in.
+
+The user management and authentication is handled by the following two domains in the application:
+  
+*  Users model, controller and associated views represent the registered application users. This model "acts_as_authentic".
+*  UserSession is the Authlogic session model and controller with associated views that handles authentication. The sample app supports both RPX authentication and conventional username-password authentication.
+
+Features that are demonstrated:
+  
+* Auto-registration via RPX (i.e. new users created automatically once they sign in via RPX)
+* Can register users with conventional username-password security (standard Authlogic support)
+* Users can add RPX authentication to conventional username-password accounts
+* Use of before_filter in controllers to restrict actions to authenticated users
+
+
+
+== Installing and Running the Sample
+
+You can download and run this sample locally. It assumes you have the following setup already:
+
+* ruby and rails installed (rails 2.3.3 is used for the sample, but you should be able to use it with older versions without too much trouble)
+* git is not required to run the sample, but recommended if you want to work on authlogic enhancements or bugs
+
+Here are the basic steps:
+  
+==== 1. Obtain the sample 
+
+You can download a zip package of the sample from {github}[http://github.com/tardate/rails-authlogic-rpx-sample/downloads]
+
+If you are using git, you can directly clone the sample repository:
+
+  $ git clone git://github.com/tardate/rails-authlogic-rpx-sample.git
+  $ cd rails-authlogic-rpx-sample
+
+Of course, if you are a github user, you can fork your own copy and work on that. 
+
+Whichever way you obtain the sample, unpack it if necessary and proceed from there.
+
+==== 2. Install the Authlogic gems
+
+The easiest way is to use the rake task in the project
+
+  $ rake gems:install
+
+==== 3. Prepare the database
+
+  $ rake db:migrate
+  
+==== 4. Obtain and set your RPX application key
+  
+To use RPX, you must first register your application at {RPX}[http://rpxnow.com/]. A free "Basic" account is available, in addition to paid enhanced versions. All work with Authlogic_RPX.
+
+The sample application is configured to obtain the RPX API key from an envirnment key called RPX_API_KEY. How you set this will depend on your operating system. for example:
+  
+  $ RPX_API_KEY=13245_a_very_long_key_you_got_when_registering_at_rpxnow.com_12345
+  $ export RPX_API_KEY
+
+Or if you are deploying this to a hosted service, follow the service provider's instructions. For example, to set the key for a deployment at heroku:
+  
+  $ heroku config:add RPX_API_KEY=13245_a_very_long_key_you_got_when_registering_at_rpxnow.com_12345
+  
+Update the RPX_APP_NAME constant in config/environment.rb to match the name you registered your application under at RPX:
+
+  RPX_APP_NAME = 'rails-authlogic-rpx-sample'
+  
+==== 5. Run!
+
+Should be ready to go now!
+
+  $ ruby script/server
+  => Booting WEBrick
+  => Rails 2.3.3 application starting on http://0.0.0.0:3000
+  => Call with -d to detach
+  => Ctrl-C to shutdown server
+  [2009-09-26 22:02:00] INFO  WEBrick 1.3.1
+  [2009-09-26 22:02:00] INFO  ruby 1.8.6 (2008-08-11) [i386-mswin32]
+  [2009-09-26 22:02:00] INFO  WEBrick::HTTPServer#start: pid=5044 port=3000
+  
+Now access the site at http://localhost:3000
+
+
+== Kudos and Kopywrite
+
+Thanks to {binarylogic}[http://github.com/binarylogic] for cleaning up authentication in rails by creating Authlogic in the first place and offering it to the community.
+
+The idea of adding RPX support to authlogic is not new. Some early ideas were found in the following projects, although it was decided not to base this implementation on a fork of these, since the approaches varied considerably: 
+*	<b>http://github.com/hunter/authlogic_rpx</b> an initial start, based on authlogic_openid and using rpx_now
+*	<b>http://github.com/gampleman/authlogic_rpx/</b> similar, but including an implementation of the RPX api
+
+authlogic_rpx was created by Paul Gallagher (tardate.com) and released under the MIT license.

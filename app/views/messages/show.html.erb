@@ -1,0 +1,18 @@
+<p>
+  <b>From:</b>
+  <%=h User.find(@messages.sender_id).username %>
+</p>
+
+<p>
+  <b>To:</b>
+  <%=h User.find(@messages.receiver_id).username %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%=h @messages.body %>
+</p>
+
+
+<%= link_to 'Edit', edit_message_path(@messages) %> |
+<%= link_to 'Back',   :back %>

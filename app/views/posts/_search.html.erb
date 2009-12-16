@@ -1,0 +1,8 @@
+<%- form_tag posts_path, :method=>'get' do -%>
+  <div id="search_bar">
+
+    <%=text_field_with_auto_complete "", "search", {:size => 15,:value=>params[:search],:class=>'text' }, { :url => formatted_locations_path(:js), :method=>:get, :with => "'search=' + element.value"}  %>
+    <%#text_field_tag :search, @search %>
+    <div id="search_submit" onclick="javascript:document.forms[0].submit()">&nbsp; </div>
+  </div>
+<%-end-%>

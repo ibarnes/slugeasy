@@ -1,0 +1,19 @@
+<div id="top_locations">
+  <br><br>
+    <span>Top Start Locations</span>
+  <ul>
+    <%-
+    @posts= Post.find(:all, :group=>"fr_location", :having=>"count(fr_location) > 1", :limit=>'5')
+    @posts.each do |post| -%>
+      <li><%= link_to post.fr_location,"?fr_search="+post.fr_location  %></li>
+    <%-end-%>
+  </ul> <br><br>
+  <span>Top End Locations</span>
+  <ul>
+    <%-
+    @posts= Post.find(:all, :group=>"to_location", :having=>"count(to_location) > 1", :limit=>'5')
+    @posts.each do |post| -%>
+      <li><%= link_to post.to_location,"?to_search="+post.to_location  %></li>
+    <%-end-%>
+  </ul>
+</div>

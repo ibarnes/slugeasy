@@ -1,0 +1,28 @@
+<p>
+  <b>User:</b>
+  <%=h User.find(@post.user_id).username %>
+</p>
+<p>
+  <b>Need:</b>
+  <%=h getneed(@post.need) %>
+</p>
+<p>
+  <b>Time:</b>
+  <%=h @post.time %>
+</p>
+<p>
+  <b>From:</b>
+  <%=h @post.fr_location %>
+</p>
+<p>
+  <b>To:</b>
+  <%=h @post.to_location %>
+</p>
+<p>
+  <b>Description:</b>
+  <%=h @post.listing %>
+</p>
+
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>

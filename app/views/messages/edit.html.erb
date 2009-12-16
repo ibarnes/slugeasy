@@ -1,0 +1,24 @@
+<h1>Editing messages</h1>
+
+<% form_for(@messages) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :sender_id %><br />
+    <%= f.text_field :sender_id %>
+  </p>
+  <p>
+    <%= f.label :receiver_id %><br />
+    <%= f.text_field :receiver_id %>
+  </p>
+  <p>
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @messages %> |
+<%= link_to 'Back', messages_path %>
