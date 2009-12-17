@@ -1,13 +1,15 @@
 class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.xml
+  before_filter :require_user, :except=>:new
+  
   def index
     #@messages = current_user.messages
     if params[:is_sent]
-      @messages = User.find(1).messages_recieved
+    @messages = User.find(1).messages
     else
-
-      @messages = User.find(1).messages
+  @messages = User.find(1).messages_recieved
+      
     
     end
 

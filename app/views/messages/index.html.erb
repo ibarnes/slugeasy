@@ -9,7 +9,10 @@
   
 
 <% @messages.each do |messages| %>
-  <%- @user = User.find(messages.receiver_id) -%>
+  <%- if params[:is_sent] 
+    @user = User.find(messages.receiver_id)
+    else
+     @user = User.find(messages.sender_id) end-%>
   <tr height="30px" style="border-bottom:1px #ebebeb dashed;">
     <td width="100px">  <%=link_to image_tag(@user.gravatar_url(:size=>"40")), show_user_path(@user.username) %></td>
     <td width="400px"><%=h messages.body[0...100] %></td>

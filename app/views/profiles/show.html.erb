@@ -60,23 +60,6 @@
       <%=link_to image_tag(user.gravatar_url(:size=>"40")), show_user_path(user.username) %>
     <%end%>
     <br><br>
-    <%
-      if current_user
-      if current_user == @user
-      %>
-        <span></span><br><br>
-        <%# @user.messages.each do |message| %>
-          <%#link_to User.find(message.receiver_id).username, message_path(message)%>
-          <br>
-        <%#end%>
-        <br>
-        <b>Outbox</b>  <br>
-        <%# @user.messages_recieved.each do |message| %>
-          <%#link_to User.find(message.sender_id).username, message_path(message)%>  <br>
-        <%#end%>
-        <br><br>
-      <%end%>
-    <%end%>
  
  
 <%end%>
