@@ -18,7 +18,7 @@
         <div id="user_nav">
           <%= link_to "All", root_path %> | <%= link_to "Riders", riders_path %> | <%= link_to "Drivers", drivers_path %> | <%= link_to "Rules", rules_path %> |
           <% if current_user %>
-            <%= link_to "Profile",show_user_path(current_user.username) %> |
+            <%= link_to "Profile",show_user_path(current_user.username) %> | Messages (<%=link_to @user.messages.size, inbox_path%>) |
             <%= link_to 'Settings', edit_profile_path(current_user.id) %> |
             <%= link_to "Sign out", signout_path %>
             <%# link_to 'New post', new_post_path %>

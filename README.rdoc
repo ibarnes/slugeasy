@@ -1,6 +1,7 @@
-=  RAILS-AUTHLOGIC-RPX-SAMPLE
+=  SlugEasy 
 
 == Purpose
+
 
 Demonstrates the use of Rails with Authlogic and Authlogic_RPX gems for authentication. This sample is intended as a guide for developers who are interested in using Authlogic RPX authentication in their own applications.
 
@@ -31,14 +32,6 @@ A full explanation of how to use Authlogic_RPX is included with the gem at [http
 
 == Features of the sample
 
-Here's a quick overview of what is in the sample, to give you an idea of where to go look and explore.
-
-The sample application is a little example of a catalogue of articles, with the ability to comment on an article. Listings of articles and comments are public, but to create or edit you must be logged in.
-
-The user management and authentication is handled by the following two domains in the application:
-  
-*  Users model, controller and associated views represent the registered application users. This model "acts_as_authentic".
-*  UserSession is the Authlogic session model and controller with associated views that handles authentication. The sample app supports both RPX authentication and conventional username-password authentication.
 
 Features that are demonstrated:
   
@@ -123,3 +116,11 @@ The idea of adding RPX support to authlogic is not new. Some early ideas were fo
 *	<b>http://github.com/gampleman/authlogic_rpx/</b> similar, but including an implementation of the RPX api
 
 authlogic_rpx was created by Paul Gallagher (tardate.com) and released under the MIT license.
+
+config.gem 'authlogic', :version => '>= 2.1.1'
+  config.gem 'rpx_now', :version => '>= 0.6.6', :source => 'http://gemcutter.org'
+  config.gem 'authlogic_rpx', :version => '>= 1.0.4', :source => 'http://gemcutter.org'
+  config.gem "friendly_id"
+  config.gem 'gravtastic', :version => '>= 2.1.0'
+  config.gem 'mislav-will_paginate', :lib => 'will_paginate',:source => 'http://gems.github.com'
+  config.gem 'mexpolk-flow_pagination', :lib => 'flow_pagination', :source => 'http://gems.github.com'

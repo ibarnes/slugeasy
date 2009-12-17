@@ -2,7 +2,14 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.xml
   def index
-    @messages = Message.all
+    #@messages = current_user.messages
+    if params[:is_sent]
+      @messages = User.find(1).messages_recieved
+    else
+
+      @messages = User.find(1).messages
+    
+    end
 
     respond_to do |format|
       format.html # index.html.erb

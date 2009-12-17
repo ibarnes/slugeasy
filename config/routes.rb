@@ -12,12 +12,14 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :articles do |article|
     article.resources :comments
   end
+  
   #map.follow "/follow/:id", :controller=> "profiles", :action => "follow"
 
   map.drivers "drivers", :controller=>"posts", :action =>"drivers"
   map.riders "riders", :controller=>"posts", :action =>"riders"
   map.rules "/home/rules", :controller=>"home", :action =>"rules"
-  
+  map.inbox "/messages?is_inbox=true", :controller=>"messages", :action=>"index"
+  map.sent "/messages?is_sent=true", :controller=>"messages", :action=>"index"
   map.root :posts 
   map.contact "/message/new/:id", :controller=>'messages', :action=>'new'
 
