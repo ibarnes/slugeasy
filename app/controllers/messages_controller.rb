@@ -6,9 +6,9 @@ class MessagesController < ApplicationController
   def index
     #@messages = current_user.messages
     if params[:is_sent]
-    @messages = User.find(1).messages
+      @messages = Message.paginate_all_by_sender_id(current_user.id, :page => params[:page], :per_page => 10)
     else
-  @messages = User.find(1).messages_recieved
+      @messages = Message.paginate_all_by_receiver_id(current_user.id, :page => params[:page], :per_page => 10)
       
     
     end
@@ -23,7 +23,8 @@ class MessagesController < ApplicationController
   # GET /messages/1.xml
   def show
     @messages = Message.find(params[:id])
-
+    @receiver = User.find(@messages.receiver_id)
+    @sender = User.find(@messages.sender_id)
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @messages }

@@ -3,9 +3,9 @@ module ApplicationHelper
 
   def getneed(id)
     if id == '1'
-      @need = "Ride"
+      @need = "ride"
     else
-      @need = "Rider"
+      @need = "rider"
     end
 
     return @need

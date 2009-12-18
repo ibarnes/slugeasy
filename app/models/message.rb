@@ -1,5 +1,8 @@
 class Message < ActiveRecord::Base
- belongs_to :user
+ cattr_reader :per_page
+  @per_page = 20
+  belongs_to :user
+ has_many :comments
   validates_presence_of :body
   validates_length_of :body, :within=> 20..160
   

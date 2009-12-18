@@ -4,8 +4,9 @@
       <%= image_tag post.user.gravatar_url, :alt=>post.user.username, :title=>post.user.username.pluralize + " profile picture" %>
       <div class="post_message_container">
         <%=link_to User.find(post.user_id).username, show_user_path(User.find(post.user_id).username)%>
-        needs a <%=getneed(post.need) %> <%if post.time != nil%>at <%= post.time %><%end%> from <%=post.fr_location %>
-        to <%=post.to_location %><br> <span>posted <%= distance_of_time_in_words_to_now(post.created_at)%> ago
+        needs a <%=getneed(post.need) %>
+        <%if post.time != nil%>at <%= post.time %><%end%> from <%=post.fr_location %>
+        to <%=post.to_location %><br> <span>posted <%= distance_of_time_in_words_to_now(post.updated_at)%> ago
           <% if current_user
             if current_user != User.find(post.user_id)%>
               <%=  link_to 'Contact', contact_path(post.user_id) %>

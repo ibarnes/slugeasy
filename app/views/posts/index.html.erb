@@ -1,8 +1,10 @@
 
 <%content_for :left_container do %>
   
-<h1>All Listings</h1>
+<h1>All Needs</h1>
 
+<%= tabnav :main %>
+<br>
 <%= render :partial=>'posts', :locals=>{:posts=>@posts} %>
 
 <%end%>

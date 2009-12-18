@@ -2,15 +2,15 @@ ActionController::Routing::Routes.draw do |map|
   map.signin "signin", :controller => "user_sessions", :action => "new"
   map.signout "signout", :controller => "user_sessions", :action => "destroy"
   map.addrpxauth "addrpxauth", :controller => "users", :action => "addrpxauth", :method => :post
-  map.resources :messages
+  
   map.resources :user_sessions
   map.resources :locations
   map.resources :users
   map.resources :posts
   map.resources :profiles
   map.resources :relationships
-  map.resources :articles do |article|
-    article.resources :comments
+  map.resources :messages do |message|
+    message.resources :comments
   end
   
   #map.follow "/follow/:id", :controller=> "profiles", :action => "follow"

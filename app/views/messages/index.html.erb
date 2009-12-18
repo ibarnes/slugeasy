@@ -1,29 +1,31 @@
 <%content_for :left_container do%>
-<h1>Messages</h1>
-<br><br>
-<%= tabnav :mail  %>
-   
-<br /><br>
-<!--Sent (<%#@messages.size%>)-->
-<table style="border-collapse:collapse;">
-  
+  <h1>Messages</h1>
+  <br><br>
+  <%= tabnav :mail  %>
 
-<% @messages.each do |messages| %>
-  <%- if params[:is_sent] 
-    @user = User.find(messages.receiver_id)
-    else
-     @user = User.find(messages.sender_id) end-%>
-  <tr height="30px" style="border-bottom:1px #ebebeb dashed;">
-    <td width="100px">  <%=link_to image_tag(@user.gravatar_url(:size=>"40")), show_user_path(@user.username) %></td>
-    <td width="400px"><%=h messages.body[0...100] %></td>
-    <td>Reply | </td>
-    <td><%= link_to 'Show', messages %> | </td>
-    <td><%= link_to 'Edit', edit_message_path(messages) %> | </td>
-    <td><%= link_to 'Delete', messages, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-<br>
+  <br /><br>
+    <ul id="posts_list">
 
+      <% @messages.reverse.each do |message| %>
+        <%- if params[:is_sent]
+          @user = User.find(message.receiver_id)
+          @edit = true
+        else
+          @user = User.find(message.sender_id) end-%>
 
-<%end%>
+        <li>
+          <%= link_to image_tag(@user.gravatar_url(:size=>"40")), show_user_path(@user.username) %>
+          <div class="post_message_container">
+            <%= link_to message.body[0...100], message  %> <br><br>
+            <span>posted <%= distance_of_time_in_words_to_now(message.created_at) %></span>
+            <%=link_to pluralize(message.comments.size, 'Comment'), message %>
+          </div>
+          <div class="clear"></div>
+        </li>
+      <% end %>
+      
+    </ul>
+    <br>
+<%= will_paginate @messages %>
+
+  <%end%>

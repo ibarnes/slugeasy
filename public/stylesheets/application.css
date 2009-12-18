@@ -44,15 +44,31 @@ a {
 }
 #nav_container{
 
-    padding:60px 0 0 0;
+    padding:10px 0 0 0;
     margin:0 10px 0 40px;
     float:right;
     font-size: 12px;
 
 }
 
-#user_nav {
+#site_nav {
+    text-align:right;
+    
+    color:#fff;
+    padding:0 0 40px 0;
+    
+}
 
+
+#site_nav a{
+
+    color:#fff;
+    text-decoration:none;
+
+}
+
+#user_nav {
+    float:right;
     color:#3C7CC9;
     background-color:#fff;
     padding:10px;

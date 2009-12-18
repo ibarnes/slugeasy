@@ -2,35 +2,36 @@ class CommentsController < ApplicationController
 	before_filter :require_user, :except => [:index, :show]
 
   def index
-    @article = Article.find(params[:article_id])
-    @comments = @article.comments
+    @message = Message.find(params[:message_id])
+    @comments = @message.comments
   end
   
   def show
-    @article = Article.find(params[:article_id])
+    @message = Message.find(params[:message_id])
     @comment = Comment.find(params[:id])
   end
   
   def new
-	@article = Article.find(params[:article_id])
+	@message = Message.find(params[:message_id])
     @comment = Comment.new
-	@comment.article = @article
+	@comment.message = @message
   end
   
   def create
-    @article = Article.find(params[:article_id])
+    @message = Message.find(params[:message_id])
     @comment = Comment.new(params[:comment])
-	@comment.article = @article
+    @comment.user_id = current_user.id
+	@comment.message = @message
     if @comment.save
       flash[:notice] = "Successfully created comment."
-      redirect_to article_path(@article)
+      redirect_to message_path(@message)
     else
       render :action => 'new'
     end
   end
   
   def edit
-    @article = Article.find(params[:article_id])
+    @message = Message.find(params[:message_id])
     @comment = Comment.find(params[:id])
   end
   
@@ -38,7 +39,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     if @comment.update_attributes(params[:comment])
       flash[:notice] = "Successfully updated comment."
-      redirect_to article_url(@comment.article_id)
+      redirect_to message_url(@comment.message_id)
     else
       render :action => 'edit'
     end
@@ -47,7 +48,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    flash[:notice] = "Successfully destroyed comment."
-    redirect_to article_url(@comment.article_id)
+    flash[:notice] = "Successfully deleted comment."
+    redirect_to message_url(@comment.message_id)
   end
 end

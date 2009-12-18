@@ -4,8 +4,8 @@ class CreatePosts < ActiveRecord::Migration
       t.integer    :user_id
       t.text      :listing
       t.string      :need
-      t.string  :fr_location
-      t.string  :to_location
+      t.integer  :fr_location_id
+      t.integer :to_location_id
       t.timestamps
     end
   end

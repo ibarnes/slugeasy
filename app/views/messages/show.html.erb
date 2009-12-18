@@ -1,18 +1,37 @@
-<p>
-  <b>From:</b>
-  <%=h User.find(@messages.sender_id).username %>
-</p>
+<%content_for :left_container do%><h1>Direct Message</h1>
+<ul id="posts_list">
+  <li>
+    
+      <%= image_tag @sender.gravatar_url, :alt=>@sender.username, :title=>@sender.username.pluralize + " profile picture" %>
+  
+    <div class="post_message_container">
+      <%=h @messages.body %> <%=link_to "@"+@receiver.username, show_user_path(@receiver.username) %> <span><br><%=h distance_of_time_in_words_to_now(@messages.updated_at)%></span> <%= link_to 'Edit', edit_message_path(@messages) %> |
+ <%= link_to 'Back',   :back %>
+    </div>
+    <div class="clear"></div>
+  </li>
+</ul>
+<br><br>
+<h3><%=pluralize(@messages.comments.size,"Comment") %></h3>
 
-<p>
-  <b>To:</b>
-  <%=h User.find(@messages.receiver_id).username %>
-</p>
+<p><%# link_to 'New Comment', new_message_comment_path(@messages)%></p>
 
-<p>
-  <b>Body:</b>
-  <%=h @messages.body %>
-</p>
+<ul id="posts_list">
+<%-@messages.comments.each do |comment|-%> 
+<li>
+<%= image_tag comment.user.gravatar_url, :alt=>comment.user.username, :title=>comment.user.username.pluralize + " profile picture" %>
+  <div class="post_message_container">
+<%= comment.description %> <br><span>posted <%= distance_of_time_in_words_to_now(comment.updated_at)%> ago </span> |
+<%= link_to "Delete", message_comment_path(@messages,comment) , :confirm => 'Are you sure?', :method => :delete %>
+ </div>
+   <div class="clear"></div>
+</li>
+<%-end-%>
 
+</ul><br>
+<br>
+<% form_for( :comment, :url => message_comments_path(@messages) ) do |f| -%>
+	<%= render :partial => 'comments/form', :locals => { :f => f , :submit_name => "Save Comment" } -%>
+<% end -%>
 
-<%= link_to 'Edit', edit_message_path(@messages) %> |
-<%= link_to 'Back',   :back %>
+<%end%>
