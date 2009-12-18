@@ -4,6 +4,8 @@
 <% form_for(@profile) do |f| %>
   <%= f.error_messages %>
 
+ <%= link_to 'Click here to add/update your profile image', 'http://gravatar.com' %><br> (We use gravatar.com for profile images on SlugEasy.)
+ <br><br>
   <p><%= f.label :CommuteTime, "Commute Time" %><br><br>
     Start <%= select(:profile, :start_time,options_for_select(gettimes)) %> End <%= select(:profile, :end_time,options_for_select(gettimes)) %>
     
