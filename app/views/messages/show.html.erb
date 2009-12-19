@@ -5,7 +5,7 @@
       <%= image_tag @sender.gravatar_url, :alt=>@sender.username, :title=>@sender.username.pluralize + " profile picture" %>
   
     <div class="post_message_container">
-      <%=h @messages.body %> <%=link_to "@"+@receiver.username, show_user_path(@receiver.username) %> <span><br><%=h distance_of_time_in_words_to_now(@messages.updated_at)%></span> <%= link_to 'Edit', edit_message_path(@messages) %> |
+      <%=link_to "@"+@receiver.username, show_user_path(@receiver.username) %> <%=h @messages.body %>  <span><br><%=h distance_of_time_in_words_to_now(@messages.updated_at)%></span> <%= link_to 'Edit', edit_message_path(@messages) %> |
  <%= link_to 'Back',   :back %>
     </div>
     <div class="clear"></div>

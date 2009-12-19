@@ -1,0 +1,33 @@
+    <h1><%=@user.username%></h1>
+    <%= image_tag @user.gravatar_url(:size=>'100'), :align=>'top' %>
+    <br>
+
+  <%if current_user%>
+
+      <%if current_user.relationships.find_by_follower_id(@user.id) == nil && @user != current_user%>
+
+        <%=link_to "Follow", relationships_path(:follower_id =>@user.id), :method=> :post   %><br>
+      <%else%>
+        <%=@user == current_user ? "" : "Following "%>
+      <%end%>
+    <%end%><br><br> <span>Listings</span><br>
+    <b> <%=Post.find_all_by_user_id(@user.id).size%></b><br><br>
+
+    <%if @profile.start_time && @profile.end_time%>
+      <b>Commute Time</b><br><br>
+      <%=@profile.start_time%> - <%=@profile.end_time%><br><br>
+    <%end%>
+    <span>Following</span><br><br>
+    <%  for relationship in @user.relationships  %>
+      <%=link_to image_tag(relationship.follower.gravatar_url(:size=>"40")), show_user_path(relationship.follower.username) %>
+      <%# link_to 'remove', relationship, :method => :delete %>
+    <%end%>
+    <br><br>
+
+    <span>Followers</span><br><br>
+
+    <%  for user in @user.inverse_followers %>
+      <%=link_to image_tag(user.gravatar_url(:size=>"40")), show_user_path(user.username) %>
+    <%end%>
+    <br><br>
+ 

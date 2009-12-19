@@ -1,0 +1,124 @@
+# Logfile created on Fri Dec 18 19:43:18 -0500 2009  [4;36;1mComment Load (0.4ms)[0m   [0;1mSELECT * FROM "comments" LIMIT 1[0m
+  [4;35;1mComment Load (0.3ms)[0m   [0mSELECT * FROM "comments" LIMIT 1[0m
+  [4;36;1mComment Load (0.3ms)[0m   [0;1mSELECT * FROM "comments" LIMIT 1[0m
+
+
+Processing UserSessionsController#new (for 0.0.0.0 at 2009-12-18 19:56:40) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 29ms (View: 26, DB: 2) | 200 OK [http://test.host/signin]
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+  [4;36;1mSlug Load (0.2ms)[0m   [0;1mSELECT * FROM "slugs" WHERE ("slugs".sluggable_id = 298486374 AND "slugs".sluggable_type = 'User') ORDER BY id DESC, id DESC LIMIT 1[0m
+  [4;35;1mSlug Load (0.1ms)[0m   [0mSELECT * FROM "slugs" WHERE ("slugs".sluggable_id = 298486374 AND "slugs".sluggable_type = 'User') ORDER BY id DESC, id DESC LIMIT 1[0m
+  [4;36;1mSlug Load (0.1ms)[0m   [0;1mSELECT * FROM "slugs" WHERE ("slugs".sluggable_id = 298486374 AND "slugs".sluggable_type = 'User') ORDER BY id DESC, id DESC LIMIT 1[0m
+  [4;35;1mSlug Load (0.1ms)[0m   [0mSELECT * FROM "slugs" WHERE ("slugs".sluggable_id = 298486374 AND "slugs".sluggable_type = 'User') ORDER BY id DESC, id DESC LIMIT 1[0m
+
+
+Processing UsersController#edit (for 0.0.0.0 at 2009-12-18 19:56:40) [GET]
+  Parameters: {"action"=>"edit", "id"=>#<User id: 298486374, username: "MyString", email: "MyString", crypted_password: nil, password_salt: nil, persistence_token: nil, created_at: "2009-12-19 00:56:40", updated_at: "2009-12-19 00:56:40", rpx_identifier: nil, login_count: 0, last_request_at: nil, last_login_at: nil, current_login_at: nil, last_login_ip: nil, current_login_ip: nil, photo_url: nil>, "controller"=>"users"}
+Redirected to http://test.host/user_sessions/new
+Filter chain halted as [:require_user] rendered_or_redirected.
+Completed in 1ms (DB: 1) | 302 Found [http://test.host/users/298486374/edit]
+
+
+Processing UsersController#new (for 0.0.0.0 at 2009-12-18 19:56:40) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (10.8ms)
+Completed in 19ms (View: 15, DB: 0) | 200 OK [http://test.host/users/new]
+  [4;36;1mSQL (0.9ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.8ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mComment Load (0.8ms)[0m   [0;1mSELECT * FROM "comments" LIMIT 1[0m
+  [4;35;1mComment Load (2.3ms)[0m   [0mSELECT * FROM "comments" LIMIT 1[0m
+  [4;36;1mComment Load (0.6ms)[0m   [0;1mSELECT * FROM "comments" LIMIT 1[0m
+
+
+Processing UserSessionsController#new (for 0.0.0.0 at 2009-12-18 19:58:49) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 17ms (View: 14, DB: 5) | 200 OK [http://test.host/signin]
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+  [4;36;1mSlug Load (0.2ms)[0m   [0;1mSELECT * FROM "slugs" WHERE ("slugs".sluggable_id = 298486374 AND "slugs".sluggable_type = 'User') ORDER BY id DESC, id DESC LIMIT 1[0m
+  [4;35;1mSlug Load (0.1ms)[0m   [0mSELECT * FROM "slugs" WHERE ("slugs".sluggable_id = 298486374 AND "slugs".sluggable_type = 'User') ORDER BY id DESC, id DESC LIMIT 1[0m
+  [4;36;1mSlug Load (0.1ms)[0m   [0;1mSELECT * FROM "slugs" WHERE ("slugs".sluggable_id = 298486374 AND "slugs".sluggable_type = 'User') ORDER BY id DESC, id DESC LIMIT 1[0m
+  [4;35;1mSlug Load (0.1ms)[0m   [0mSELECT * FROM "slugs" WHERE ("slugs".sluggable_id = 298486374 AND "slugs".sluggable_type = 'User') ORDER BY id DESC, id DESC LIMIT 1[0m
+
+
+Processing UsersController#edit (for 0.0.0.0 at 2009-12-18 19:58:49) [GET]
+  Parameters: {"action"=>"edit", "id"=>#<User id: 298486374, username: "MyString", email: "MyString", crypted_password: nil, password_salt: nil, persistence_token: nil, created_at: "2009-12-19 00:58:49", updated_at: "2009-12-19 00:58:49", rpx_identifier: nil, login_count: 0, last_request_at: nil, last_login_at: nil, current_login_at: nil, last_login_ip: nil, current_login_ip: nil, photo_url: nil>, "controller"=>"users"}
+Redirected to http://test.host/user_sessions/new
+Filter chain halted as [:require_user] rendered_or_redirected.
+Completed in 1ms (DB: 1) | 302 Found [http://test.host/users/298486374/edit]
+
+
+Processing UsersController#new (for 0.0.0.0 at 2009-12-18 19:58:49) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (10.2ms)
+Completed in 18ms (View: 14, DB: 0) | 200 OK [http://test.host/users/new]
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.8ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.9ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.8ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
