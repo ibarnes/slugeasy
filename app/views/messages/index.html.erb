@@ -4,28 +4,31 @@
   <%= tabnav :mail  %>
 
   <br /><br>
-    <ul id="posts_list">
+  <ul id="posts_list">
 
-      <% @messages.reverse.each do |message| %>
-        <%- if params[:is_sent]
-          @user = User.find(message.receiver_id)
-          @edit = true
-        else
-          @user = User.find(message.sender_id) end-%>
+    <% @messages.reverse.each do |message| %>
+      <%- if params[:is_sent]
+        @user = User.find(message.receiver_id)
+        @edit = true
+      else
+        @user = User.find(message.sender_id) end-%>
 
-        <li>
-          <%= link_to image_tag(@user.gravatar_url(:size=>"40")), show_user_path(@user.username) %>
-          <div class="post_message_container">
-            <%= link_to message.body[0...100], message  %> <br><br>
-            <span>posted <%= distance_of_time_in_words_to_now(message.created_at) %></span>
-            <%=link_to pluralize(message.comments.size, 'Comment'), message %>
-          </div>
-          <div class="clear"></div>
-        </li>
-      <% end %>
-      
-    </ul>
-    <br>
-<%= will_paginate @messages %>
+      <li>
+        <%= link_to image_tag(@user.gravatar_url(:size=>"40")), show_user_path(@user.username) %>
+        <div class="post_message_container">
+          <%= link_to message.body[0...100], message  %> <br><br>
+          <span>posted <%= distance_of_time_in_words_to_now(message.created_at) %></span>
+          <%=link_to pluralize(message.comments.size, 'Comment'), message %>
+        </div>
+        <div class="clear"></div>
+      </li>
+    <% end %>
 
-  <%end%>
+  </ul>
+  <br>
+  <%= will_paginate @messages %>
+
+<%end%>
+<%content_for :right_container do%>
+ <%= render :partial=>'upgrade' %>
+ <%end%>

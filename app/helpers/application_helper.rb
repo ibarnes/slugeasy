@@ -5,7 +5,7 @@ module ApplicationHelper
     if id == '1'
       @need = "ride"
     else
-      @need = "rider"
+      @need = "passenger"
     end
 
     return @need

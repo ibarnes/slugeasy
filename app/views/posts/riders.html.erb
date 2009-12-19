@@ -1,9 +1,0 @@
-<%content_for :left_container do %>
-<h1>Need Rides</h1>
-<%= tabnav :main %><br>
-<%= render :partial=>'posts', :locals=>{:posts=>@posts} %>
-<%end%>
-<%content_for :right_container do %>
-  <%= render :partial=>'search'%>
-  <%= render :partial=>'pop_locations'%>
-<%end%>

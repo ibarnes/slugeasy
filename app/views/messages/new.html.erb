@@ -1,12 +1,12 @@
-<h1>New messages</h1>
+<%content_for :left_container do%><h1>New message</h1>
 
 <% form_for(@messages) do |f| %>
   <%= f.error_messages %>
 
   
   <p>
-    <%= f.label :Message %><br />
-    <%= f.text_area :body, :value=>'Hey ' + @user.username + ',', :size=>'30x10'  %>
+    <%= f.label :Message, link_to('@'+@user.username,show_user_path(@user.username)) %><br />
+    <%= f.text_area :body, :size=>'30x10'  %>
   </p>
   <p>
     <%= f.submit 'Create' %>
@@ -14,3 +14,9 @@
 <% end %>
 
 <%= link_to 'Back', posts_path %>
+
+  <%end%>
+
+  <%content_for :right_container do%>
+ <%= render :partial=>'upgrade' %>
+ <%end%>

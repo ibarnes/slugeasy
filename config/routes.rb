@@ -16,7 +16,7 @@ ActionController::Routing::Routes.draw do |map|
   #map.follow "/follow/:id", :controller=> "profiles", :action => "follow"
 
   map.drivers "drivers", :controller=>"posts", :action =>"drivers"
-  map.riders "riders", :controller=>"posts", :action =>"riders"
+  map.pasangers "passengers", :controller=>"posts", :action =>"passengers"
   map.rules "/home/rules", :controller=>"home", :action =>"rules"
   map.inbox "/messages?is_inbox=true", :controller=>"messages", :action=>"index"
   map.sent "/messages?is_sent=true", :controller=>"messages", :action=>"index"

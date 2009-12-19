@@ -32,7 +32,7 @@
           <%end%>
           <% if current_user %>
             <%= link_to "Log Out", signout_path %> |
-            Upgrade
+            <%=link_to 'Upgrade','#', :style=>"color:#FF0000;" %>
           <% end %>
          
         </div>

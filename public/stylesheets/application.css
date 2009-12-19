@@ -121,6 +121,11 @@ a {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
 }
+#flash_notice, #flash_warning {
+    padding: 5px 8px;
+    margin: 10px 0;
+    
+}
 
 #flash_notice, #flash_error {
     padding: 5px 8px;
@@ -137,6 +142,10 @@ a {
     border: solid 1px #C66;
 }
 
+#flash_warning {
+    background-color: #FBE3E4;
+    border: solid 1px #C66;
+}
 
 /* Left Panel */
 #left_panel_container{
@@ -167,7 +176,7 @@ a {
 
 /* Search */
 #search_bar{
-    width:160px;
+    width:180px;
     height: 30px;
     font-size:18px;
     -moz-border-radius: 3px;
@@ -177,7 +186,7 @@ a {
 
 #search_bar .text{
     float:left;
-    width:130px;
+    width:150px;
     height: 25px;
     font-size:20px;
     line-height:26px;

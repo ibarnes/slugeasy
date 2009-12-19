@@ -41,7 +41,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def riders
+  def passengers
      @posts = Post.paginate(:all, :page => params[:page],:per_page => 10, :order=>'created_at desc',:conditions => ['need = "1"'])
     if params[:fr_search] != nil
       @posts = Post.paginate(:all, :page => params[:page],:per_page => 10, :order=>'created_at desc', :conditions => ['need = "1" and fr_location LIKE ? ' ,"%#{params[:fr_search]}%"])
@@ -99,7 +99,8 @@ class PostsController < ApplicationController
         format.html { redirect_to(show_user_path(current_user.username)) }
         format.xml  { render :xml => @post, :status => :created, :location => @post }
       else
-        format.html { render :action => "new" }
+        flash[:warning] = 'Please fill in both from and to locations!'
+        format.html {redirect_to(show_user_path(current_user.username))}
         format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
       end
     end
