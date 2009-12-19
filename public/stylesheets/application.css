@@ -29,8 +29,27 @@ a {
     overflow: hidden;
 }
 
+/* Profile Settings*/
 
-/* Header */
+#edit_profile_1 label{
+   color:#1571B2;
+   
+   font-size:14px;
+
+}
+#edit_profile_1 select{
+   color:#000;
+   margin-top:3px;
+   padding-right:20px;
+   width:260px;
+   line-height:50px;
+   font-size:14px;
+
+}
+
+
+
+/* Main Content */
 #header {
     padding:0 0 0 0;
     width: 1060px;

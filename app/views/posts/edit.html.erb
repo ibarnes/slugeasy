@@ -9,7 +9,8 @@
   </p>
   <p> Time:
   <br>
-    <%=  f.text_field :time %>
+     <%= select(:post, :time,options_for_select(gettimes,@post.time),{:include_blank => true},:prompt => 'Select Time') %>
+
   </p>
    <p>
     From<br>

@@ -9,6 +9,7 @@
         <%=  %>
 
         <div id="new_post_form">
+          
           <h3>What's your need?</h3>
           Your Need <%= select(:post, :need, [['Ride', 1], ['Rider', 2]]) %>
           Time <%= select :post, :time, gettimes, :size =>'6' %>
