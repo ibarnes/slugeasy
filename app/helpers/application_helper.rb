@@ -35,6 +35,15 @@ module ApplicationHelper
     return @need
   end
 
+  # If not paid remove the ability to post messages
+  def post_limit
+    if Post.find_all_by_created_at(Date.today-1..Date.today).size < 4
+      return true
+    else
+      return false
+    end
+  end
+
   def all_post
     Post.paginate_all_by_user_id(current_user.followers.map(& :id).push(self.id), :page => params[:page], :per_page => 10, :order=>'created_at desc')
   end

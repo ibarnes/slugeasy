@@ -8,9 +8,14 @@
         <%if post.time != nil%>at <%= post.time %><%end%> from <%=post.fr_location %>
         to <%=post.to_location %><br> <span>posted <%= distance_of_time_in_words_to_now(post.updated_at)%> ago
           <% if current_user
-            if current_user != User.find(post.user_id)%>
+            if current_user != User.find(post.user_id)
+             if post_limit
+            %>
+
               <%=  link_to 'Contact', contact_path(post.user_id) %>
-            <%end %>
+            <%else
+            %> Reached Message Limit - <%=link_to "Upgrade","#"%>
+            <%end end %>
           <%end%>
           <%# link_to 'View', post %>
           <%if current_user%>
