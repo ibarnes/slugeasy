@@ -4,6 +4,7 @@ body {
     font-size: 0.75em;
     background: url(/images/bg-top-block.gif) repeat-x;
     background-color: #f3f3f3;
+    color:#404040;
     height:100%;
 }
 
@@ -32,26 +33,45 @@ a {
 /* Profile Settings*/
 
 #edit_profile_1 label{
-   color:#1571B2;
-   
-   font-size:14px;
+    /*color:#1571B2;*/
+
+    font-size:14px;
 
 }
-#edit_profile_1 select{
-   color:#000;
-   margin-top:3px;
-   padding-right:20px;
-   width:260px;
-   line-height:50px;
-   font-size:14px;
+form select{
+    color:#000;
+    /* border-color:#404040;*/
+    margin-top:10px;
+    height:25px;
+    width:260px;
+    line-height:50px;
+    font-size:14px;
 
 }
+form textarea{
+    margin-top:10px;
+    width:260px;
+}
 
+form input.text{
+    width:250px;
+    
+    font-size:18px;
+    height:22px;
+    margin-top:10px;
+}
 
+#new_post select{
+    width:80px;
+    font-size:12px;
+    line-height:0px;
+height:20px;
+}
 
 /* Main Content */
 #header {
     padding:0 0 0 0;
+   
     width: 1060px;
     margin: 20px auto 0 auto;
 
@@ -64,18 +84,19 @@ a {
 #nav_container{
 
     padding:10px 0 0 0;
-    margin:0 10px 0 40px;
+    margin:0 10px 0 10px;
     float:right;
     font-size: 12px;
+    
 
 }
 
 #site_nav {
     text-align:right;
-    
+
     color:#fff;
-    padding:0 0 40px 0;
-    
+    padding:20px 0 10px 0;
+    margin-top:10px;
 }
 
 
@@ -124,7 +145,7 @@ a {
 #flash_notice, #flash_warning {
     padding: 5px 8px;
     margin: 10px 0;
-    
+
 }
 
 #flash_notice, #flash_error {
@@ -160,16 +181,16 @@ a {
 /* Right Panel */
 
 #right_panel_container {
-    
+
     width:180px;
     margin: 0px;
     padding: 0px;
     float:right;
-  
-    
+
+
 }
 #right_panel_container span {
-    
+
     padding:10px 0 0 0;
     font-weight:700;
 }
@@ -192,19 +213,22 @@ a {
     line-height:26px;
     padding-top:2px;
     border:0;
-    
+    margin:0px;
+
 }
 #search_bar #search_submit {
-     float:right;
-     background:url('/images/search_button.png') 0 0px no-repeat;
-     width:30px;
-     height:30px;
+    float:right;
+    background:url('/images/search_button.png') 0 0px no-repeat;
+    width:30px;
+    height:30px;
+    margin:0px;
 }
 #search_bar #search_submit:hover {
-     float:right;
-     background:url('/images/search_button.png') 0 -30px no-repeat;
-     width:30px;
-     height:30px;
+    float:right;
+    background:url('/images/search_button.png') 0 -30px no-repeat;
+    width:30px;
+    height:30px;
+    margin:0px;
 }
 
 #search_bar .submit{
@@ -255,9 +279,9 @@ a {
     list-style-position: outside;
     padding: 10px 0 0 0;
     margin: 0px ;
-    
+
     background-color:#fff;
-    }
+}
 
 /* Post Lists */
 #posts_list {
@@ -356,46 +380,46 @@ a {
 }
 
 .pagination {
-  background: white;
-  /* self-clearing method: */ }
-  .pagination a, .pagination span {
+    background: white;
+    /* self-clearing method: */ }
+.pagination a, .pagination span {
     padding: .2em .5em;
     display: block;
     float: left;
     margin-right: 1px; }
-  .pagination span.disabled {
+.pagination span.disabled {
     color: #999;
     border: 1px solid #DDD; }
-  .pagination span.current {
+.pagination span.current {
     font-weight: bold;
     background: #2E6AB1;
     color: white;
     border: 1px solid #2E6AB1; }
-  .pagination a {
+.pagination a {
     text-decoration: none;
     color: #1571B2;
     border: 1px solid #9AAFE5; }
-    .pagination a:hover, .pagination a:focus {
-      color: #003;
-      border-color: #003; }
-  .pagination .page_info {
+.pagination a:hover, .pagination a:focus {
+    color: #003;
+    border-color: #003; }
+.pagination .page_info {
     background: #2E6AB1;
     color: white;
     padding: .4em .6em;
     width: 22em;
     margin-bottom: .3em;
     text-align: center; }
-    .pagination .page_info b {
-      color: #003;
-      background: #6aa6ed;
-      padding: .1em .25em; }
-  .pagination:after {
+.pagination .page_info b {
+    color: #003;
+    background: #6aa6ed;
+    padding: .1em .25em; }
+.pagination:after {
     content: ".";
     display: block;
     height: 0;
     clear: both;
     visibility: hidden; }
-  * html .pagination {
+* html .pagination {
     height: 1%; }
-  *:first-child+html .pagination {
+*:first-child+html .pagination {
     overflow: hidden; }

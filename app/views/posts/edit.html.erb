@@ -4,29 +4,23 @@
   <%= f.error_messages %>
 
   <p>
-    Your Need:<br>
+    Your Need<br>
     <%= select(:post, :need, [['Ride', 1], ['Rider', 2]]) %>
   </p>
-  <p> Time:
+  <p> Time
   <br>
-     <%= select(:post, :time,options_for_select(gettimes,@post.time),{:include_blank => true},:prompt => 'Select Time') %>
+     <%= select(:post, :time,options_for_select(gettimes, @post.time),{:include_blank => true},:prompt => 'Select Time') %>
 
   </p>
    <p>
     From<br>
     
-<%=text_field_with_auto_complete :post, :fr_location, {:size => 15 }, { :url => formatted_locations_path(:js), :method=>:get, :with => "'search=' + element.value"}  %>
+<%=text_field_with_auto_complete :post, :fr_location, {:size => 15, :class=>'text'}, { :url => formatted_locations_path(:js), :method=>:get, :with => "'search=' + element.value"}  %>
   </p>
    <p>
     To<br>
-  <%=text_field_with_auto_complete :post, :to_location, {:size => 15 }, { :url => formatted_locations_path(:js), :method=>:get, :with => "'search=' + element.value"}  %>
-
-    
-  </p>
-    <p>
-    Description<br />
-    <%= f.text_area :listing %>
-  </p>
+  <%=text_field_with_auto_complete :post, :to_location, {:size => 15,:class=>'text' }, { :url => formatted_locations_path(:js), :method=>:get, :with => "'search=' + element.value"}  %>
+   </p>
   <p>
     <%= f.submit 'Update' %>
   </p>

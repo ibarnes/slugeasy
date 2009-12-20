@@ -99,7 +99,7 @@ class PostsController < ApplicationController
         format.html { redirect_to(show_user_path(current_user.username)) }
         format.xml  { render :xml => @post, :status => :created, :location => @post }
       else
-        flash[:warning] = 'Please fill in both from and to locations!'
+        flash[:warning] = 'Please fill in both <b>from</b> and <b>to</b> locations!'
         format.html {redirect_to(show_user_path(current_user.username))}
         format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
       end
@@ -116,7 +116,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.update_attributes(params[:post])
         flash[:notice] = 'Post was successfully updated.'
-        format.html { redirect_to(@post) }
+        format.html { redirect_to(root_url) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -1,16 +1,13 @@
-
 <%content_for :left_container do%>
 
     <%if current_user == @user%>
       <%- form_for(@post) do |f|-%>
 
-        <%= f.error_messages %>
-
-        <%=  %>
-
         <div id="new_post_form">
           
           <h3>What's your need?</h3>
+
+
           Your Need <%= select(:post, :need, [['Ride', 1], ['Rider', 2]]) %>
           Time <%= select :post, :time, gettimes, :size =>'6' %>
           From <%=  text_field_with_auto_complete :post, :fr_location, {:size => 15 }, { :url => formatted_locations_path(:js), :method=>:get, :with => "'search=' + element.value"}  %>
