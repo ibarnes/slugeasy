@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :orders
+
   map.signin "signin", :controller => "user_sessions", :action => "new"
   map.signout "signout", :controller => "user_sessions", :action => "destroy"
   map.addrpxauth "addrpxauth", :controller => "users", :action => "addrpxauth", :method => :post
@@ -22,10 +24,14 @@ ActionController::Routing::Routes.draw do |map|
   map.sent "/messages?is_sent=true", :controller=>"messages", :action=>"index"
   map.root :posts 
   map.contact "/message/new/:id", :controller=>'messages', :action=>'new'
-
+  map.upgrade "/account/upgrade", :controller=>'users', :action=>'upgrade'
   map.show_user ':slug', :controller => 'profiles', :action => 'show'
   map.connect ':slug', :controller => 'profiles', :action => 'show'
+  map.newbasic '/users/new/basic', :controller=>'users',:action=>'basic'
+  map.newpro '/users/new/pro', :controller=>'users',:action=>'pro'
   
+
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

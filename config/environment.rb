@@ -28,7 +28,8 @@ Rails::Initializer.run do |config|
   config.gem 'gravtastic', :version => '>= 2.1.0'
   config.gem 'mislav-will_paginate', :lib => 'will_paginate',:source => 'http://gems.github.com'
   config.gem 'mexpolk-flow_pagination', :lib => 'flow_pagination', :source => 'http://gems.github.com'
-
+  config.gem 'cheddargetter', :source=>'http://gemcutter.org'
+  
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]

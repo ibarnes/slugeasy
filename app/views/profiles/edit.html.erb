@@ -7,25 +7,38 @@
  <%= link_to 'Click here to add/update your profile image', 'http://gravatar.com' ,:target=>'_blank'%><br> (We use gravatar.com for profile images on SlugEasy.)
  <br><br>
  <p>
-   <%=  f.label :MusicPreference, "Music Preference"%><br>
+   <%=  f.label :MusicPreference, "Music Preference"%> <%- tooltip do -%>
+  <p>Let other sluggers know if you like to listen to music on your trip</p>
+<%- end -%>
    <%= select(:profile, :music_preference, [['Prefer',1], ['Prefer Not',2], ['Does Not Matter',3]] ) %>
 
  </p>
  <p>
-   <%=  f.label :NoisePreference, "Talking Preference"%><br>
+   <%=  f.label :NoisePreference, "Talking Preference"%>
+   <%- tooltip do -%>
+  <p>Let other sluggers know if you like to have conversations on your trip</p>
+<%- end -%>
    <%= select(:profile, :music_preference, [['Prefer Silence',1], ['Prefer Talking',2], ['Does Not Matter',3]] ) %>
 
  </p>
-  <p><%= f.label :CommuteTime, "Start Commute Time" %><br>
+  <p><%= f.label :CommuteTime, "Start Commute Time" %>
+    <%- tooltip do -%>
+  <p>What time do you like to leave for work</p>
+<%- end -%>
     <%= select(:profile, :start_time,options_for_select(gettimes,@profile.start_time),{:include_blank => true},:prompt => 'Select Time') %>
   </p>
   <p>
-    <%= f.label :CommuteTime, "End Commute Time" %><br>
+    <%= f.label :CommuteTime, "End Commute Time" %>
+      <%- tooltip do -%>
+  <p>What time do you like to leave work</p>
+<%- end -%>
      <%= select(:profile, :end_time,options_for_select(gettimes, @profile.end_time),{:include_blank => true},:prompt => 'Select Time') %>
     
   </p>
   <p>
-   <%= f.label :Description, "One Line Bio (160 max)" %><br>
+   <%= f.label :Description, "Bio" %>  <%- tooltip do -%>
+  <p>One Line Bio (160 max)</p>
+<%- end -%>
     <%= f.text_area :description, :size => "30x5" %>
   </p>
   <p>

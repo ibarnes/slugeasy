@@ -1,0 +1,33 @@
+<h1>Listing orders</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Plancode</th>
+    <th>Firstname</th>
+    <th>Lastname</th>
+  </tr>
+<% @orders.each do |order| %>
+  <tr>
+    <td><%=h order.user_id %></td>
+    <td><%=h order.plancode %></td>
+    <td><%=h order.firstname %></td>
+    <td><%=h order.lastname %></td>
+    <td><%= link_to 'Show', order %></td>
+    <td><%= link_to 'Edit', edit_order_path(order) %></td>
+    <td><%= link_to 'Destroy', order, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New order', new_order_path %>
+<br><br>
+
+<%@cheddar_getter = CheddarGetter.new('ikebarnes@gmail.com', '135adgzc', '135adgzc')%>
+  
+
+  <% @cheddar_getter.plans.each_with_index do |plan,index| %>
+  <%= index%>  -- <%=    plan.fetch("name") %>  <%= plan.fetch("description")%> <br><br>
+  <%end%>

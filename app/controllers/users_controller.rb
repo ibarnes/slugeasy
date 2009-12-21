@@ -1,10 +1,28 @@
 class UsersController < ApplicationController
 	before_filter :require_no_user, :only => [:new, :create]
-	before_filter :require_user, :except => [:new, :create]
+	before_filter :require_user, :except => [:new, :create, :upgrade, :pro,:basic]
   
-  
+ 
 	def new
 		@user = User.new
+    @order = Order.new
+    @paid = false
+    
+	end
+
+  def basic
+		@user = User.new
+    @paid=true
+
+	end
+
+   def pro
+		@user = User.new
+    @paid=true
+	end
+
+  def upgrade
+		#@user = User.new
 	end
   
 	def create

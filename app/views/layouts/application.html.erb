@@ -12,7 +12,7 @@
   <body>
     <div id="header">
       <div id="logo">
-        <img src="/images/slug.png">
+        <img src="/images/slug.png" height="75%" width="75%">
       </div>
       <div id="nav_container">
         <div id="site_nav">
@@ -27,12 +27,12 @@
             <%= link_to "Needs", root_path %> |
           <%= link_to "Rules", rules_path %> |
           <% if !current_user %> 
-          <%= link_to "Register", new_user_path %> |
+          <%= link_to "Register/Pricing", upgrade_path %> |
           <%= link_to "Sign in", signin_path %>
           <%end%>
           <% if current_user %>
             <%= link_to "Log Out", signout_path %> |
-            <%=link_to 'Upgrade','#', :style=>"color:#FF0000;" %>
+            <%=link_to 'Upgrade','/account/upgrade', :style=>"color:#FF0000;" %>
           <% end %>
          
         </div>

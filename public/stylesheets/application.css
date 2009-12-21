@@ -1,9 +1,8 @@
 body {
 
-    font-family: Verdana, Helvetica, Arial;
+    font-family: Verdana,sans-serif;
     font-size: 0.75em;
-    background: url(/images/bg-top-block.gif) repeat-x;
-    background-color: #f3f3f3;
+    background: url(/images/bg-top-block.gif) repeat-x; 
     color:#404040;
     height:100%;
 }
@@ -11,6 +10,14 @@ body {
 h1 {
     font-size:20px;
     border-bottom:dashed 1px #E8E8E8;
+}
+
+h4 {
+    font-size:20px;
+    font-weight:100;
+    color:#b7b7b7;
+    line-height:5px;
+    padding:0px;
 }
 
 
@@ -30,6 +37,138 @@ a {
     overflow: hidden;
 }
 
+/* Upgrade Page */
+
+
+
+/* BillBoard */
+
+#billboard #container{
+    background-color:#E8ECDC;
+    width:810px;
+    text-align:center;
+    border:0px;
+    height:310px;
+}
+
+#billboard #masthead{
+    
+    width:100%;
+    font-size:30px;
+    text-align:center;
+    
+}
+
+#billboard #masthead h1{
+    font-size:30px;
+    font-weight:bold;
+}
+
+#billboard span{
+    font-size:14px;
+    color:#397AC5;
+    font-weight:700;
+    line-height:1px;
+   
+   
+}
+
+#billboard li{
+    list-style:none;
+}
+
+
+#billboard  h2, h3{
+    line-height:8px;
+}
+
+#billboard h1{
+    line-height:8px;
+    border:0px none;
+    font-size:28px;
+}
+
+#billboard #container #pro, #basic, #free{
+    text-align:center;
+    border:1px solid #dedede;
+    float:left;
+    width:226px;
+    padding:10px 40px 0  0px;
+    margin:1px;
+    height:260px;
+    background:#efefef;
+}
+
+#billboard #container  #basic{
+ height:290px;
+ 
+ background:#fff;
+}
+
+
+#billboard #container #highlights{
+    padding-top:10px;
+    font-size:16px;
+    font-weight:bold;
+
+}
+#billboard #container #highlights span{
+    color:#c33700;
+    font-size:16px;
+    font-weight:bold;
+
+}
+
+#billboard strike{
+    text-decoration: line-through;
+}
+
+#billboard .submit{
+    margin:4px;
+    width:100px;
+    height:40px;
+    background:url('/images/btn_signup_small.png') no-repeat;
+}
+
+#extra {
+    width: 890px;
+    height:100%;
+    margin: 10px auto 0 auto;
+    background-color: #FFF;
+    
+    border: solid 1px #ebebeb;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+#extra h1{
+    border:0px;
+
+}
+
+#faq {
+    width:850px;
+    margin-top:10px;
+    padding:20px;
+}
+
+#faq #left{
+    float:left;
+    width:440px;
+    padding-right:10px;
+}
+#faq #right{
+    float:left;
+    width:400px;
+
+    
+}
+
+.rule {
+    border-bottom:1px solid #ebebeb;
+
+}
+
 /* Profile Settings*/
 
 #edit_profile_1 label{
@@ -41,7 +180,7 @@ a {
 form select{
     color:#000;
     /* border-color:#404040;*/
-    margin-top:10px;
+    margin-top:1px;
     height:25px;
     width:260px;
     line-height:50px;
@@ -65,22 +204,21 @@ form input.text{
     width:80px;
     font-size:12px;
     line-height:0px;
-height:20px;
+    height:20px;
 }
 
 /* Main Content */
 #header {
     padding:0 0 0 0;
-   
     width: 1060px;
-    margin: 20px auto 0 auto;
-
+    margin: 2px auto 0 auto;
 }
 
 #logo{
 
     float:left;
 }
+
 #nav_container{
 
     padding:10px 0 0 0;
@@ -95,7 +233,7 @@ height:20px;
     text-align:right;
 
     color:#fff;
-    padding:20px 0 10px 0;
+    padding:`0px 0 10px 0;
     margin-top:10px;
 }
 
@@ -135,9 +273,9 @@ height:20px;
 #container {
     width: 960px;
     height:100%;
-    margin: 20px auto 0 auto;
+    margin: 10px auto 0 auto;
     background-color: #FFF;
-    padding: 10px 40px;
+    padding: 5px 40px;
     border: solid 1px #ccc;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;

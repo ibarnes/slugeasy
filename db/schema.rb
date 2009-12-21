@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091212065159) do
+ActiveRecord::Schema.define(:version => 20091220195209) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(:version => 20091212065159) do
     t.integer  "sender_id"
     t.integer  "receiver_id"
     t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "plancode"
+    t.string   "firstname"
+    t.string   "lastname"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -100,6 +109,7 @@ ActiveRecord::Schema.define(:version => 20091212065159) do
     t.string   "last_login_ip"
     t.string   "current_login_ip"
     t.string   "photo_url"
+    t.string   "account_type"
   end
 
   add_index "users", ["rpx_identifier"], :name => "index_users_on_rpx_identifier"
