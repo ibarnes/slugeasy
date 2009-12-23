@@ -233,7 +233,7 @@ form input.text{
     text-align:right;
 
     color:#fff;
-    padding:`0px 0 10px 0;
+    padding:20px 0 10px 0;
     margin-top:10px;
 }
 
@@ -345,7 +345,7 @@ form input.text{
 
 #search_bar .text{
     float:left;
-    width:150px;
+    width:149px;
     height: 25px;
     font-size:20px;
     line-height:26px;
@@ -357,7 +357,7 @@ form input.text{
 #search_bar #search_submit {
     float:right;
     background:url('/images/search_button.png') 0 0px no-repeat;
-    width:30px;
+    width:29px;
     height:30px;
     margin:0px;
 }

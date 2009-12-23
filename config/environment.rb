@@ -49,6 +49,7 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
   
-  RPX_API_KEY = ENV['RPX_API_KEY']
+  #RPX_API_KEY = ENV['RPX_API_KEY']
+  RPX_API_KEY = '4e00f14c6c833a86d0598f17b2ab664111239357'
   RPX_APP_NAME = 'slugeasy'
 end

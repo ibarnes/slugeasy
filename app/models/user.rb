@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :messages_recieved, :class_name => "Message", :foreign_key => "receiver_id"
   has_many :messages, :foreign_key => 'sender_id'
+  has_one :profile, :dependent => :destroy
+  has_one :order,  :dependent => :destroy
 
 
   
@@ -27,6 +29,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  
   
 private
 

@@ -30,7 +30,7 @@ class UserSessionsController < ApplicationController
 					flash[:notice] = "Successfully signed in."
 					redirect_back_or_default posts_path
 				else
-					flash[:notice] = "Welcome back! Please complete required registration details before continuing.."
+					flash[:notice] = "Welcome back " + current_user.username + "!"
 					redirect_to show_user_path(current_user.username)
 				end
 			end

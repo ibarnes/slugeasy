@@ -12,14 +12,14 @@
   <body>
     <div id="header">
       <div id="logo">
-        <img src="/images/slug.png" height="75%" width="75%">
+        <img src="/images/slug.png" >
       </div>
       <div id="nav_container">
         <div id="site_nav">
           <% if current_user %>
             <%= link_to current_user.username,show_user_path(current_user.username) %> |
             <%=link_to "Messages ("+current_user.messages_recieved.size.to_s+")", inbox_path%> |
-            <%= link_to 'Settings', edit_profile_path(current_user.id) %> 
+            <%= link_to 'Settings', edit_profile_path(Profile.find_by_user_id(current_user.id)) %>
             <%end%>
             </div>
         
