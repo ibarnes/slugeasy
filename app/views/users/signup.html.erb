@@ -1,0 +1,67 @@
+<div id="billboard">
+  <div id="masthead">
+    <h1>30 day Free Trial On Pro and Basic Accounts!</h1>
+    <h4>Easily find sluggers in your area before you leave the house!</h4>
+    <div class="clear"></div>
+  </div>
+  <div id="container">
+    <div id="pro">
+      <ul>
+        <li><h1>Pro</h1><h3>$24/Month</h3><span>Power Slugger</span></li>
+        <li>
+          <div id="highlights">
+            <span>Unlimited</span> messages<br>
+            <span>Unlimited</span> posts<br>
+            <span>Unlimited</span> follows<br>
+            <span>Email notifications</span><br>
+            <span>Advanced profile</span>
+
+          </div>
+          <br>
+          <%= link_to submit_tag('',:class=>'submit'), newpro_path %>
+        </li>
+
+      </ul>
+
+    </div>
+
+    <div id="basic">
+      <ul>
+        <li><h1>Basic</h1><h3>$12/Month</h3><span>Daily Slugger</span></li>
+        <li><div id="highlights">
+            <span>30</span> Messages<br>
+            <span>30</span> posts<br>
+            <span>10</span> follows<br>
+            <span>Email notifications</span><br>
+            <span>Advanced profile</span>
+          </div><br>
+          <%= link_to submit_tag('',:class=>'submit'), newbasic_path %>
+        </li>
+
+      </ul>
+
+    </div>
+
+    <div id="free">
+      <ul>
+        <li><h1>Free</h1><h3>$0/Month</h3><span>Slug Sometimes</span></li>
+        <li><div id="highlights">
+            <span>15</span> Messages<br>
+            <span>15</span> posts<br>
+            <strike>Follows</strike><br>
+            <strike>Notifications</strike><br>
+            <strike>Advanced profile</strike>
+          </div>
+          <br>
+          <%= link_to submit_tag('',:class=>'submit'), new_user_path %>
+        </li>
+      </ul>
+
+    </div>
+   
+  
+    <div class="clear"></div>
+  </div>
+</div>
+
+<%= render :partial=>'extra' %>

@@ -128,6 +128,43 @@ a {
     width:100px;
     height:40px;
     background:url('/images/btn_signup_small.png') no-repeat;
+    cursor:pointer;
+}
+#upgrade {
+    background:#fff;
+    margin-top:20px;
+
+}
+#upgrade td{
+    border:1px dashed #ebebeb;
+}
+
+#upgrade tr{
+    height:35px;
+    width:800px;
+    
+    font-size:20px;
+}
+
+ #special{
+    text-align:center;
+    width:850px;
+    margin-left:35px;
+    padding:20px;
+    background:#FFFFCC;
+}
+
+#upgrade td{
+    width:200px;
+}
+
+
+ #upgrade .submit{
+    margin:4px;
+    width:100px;
+    height:40px;
+    background:url('/images/btn_update_small.jpg') no-repeat;
+     cursor:pointer;
 }
 
 #extra {

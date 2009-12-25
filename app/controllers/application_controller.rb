@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password, :password_confirmation
   
-  helper_method :current_user, :current_user_session
+  helper_method :current_user, :current_user_session, :current_user_plan
   
   private
 
@@ -27,7 +27,14 @@ class ApplicationController < ActionController::Base
 		return @current_user if defined?(@current_user)
 		@current_user = current_user_session && current_user_session.record
 	end
-  
+
+  def current_user_plan
+    @order = Order.find_or_create_by_user_id(current_user.id)
+    
+      return @order.plancode
+  end
+
+
     def require_user
       unless current_user
         store_location
@@ -57,5 +64,19 @@ class ApplicationController < ActionController::Base
     def redirect_back_or_default(default)
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
-    end  
+    end
+
+    def upgrade_message(plan)
+      if plan == 'Basic'
+        'You are upgrading your Slugeasy account. Since you are upgrading
+         to a pay account, we will need your secure credit card details so we can
+         bill you $12/month for the new plan. The upgrade will be effective immediately.
+          You\'ll have access to your new features today.'
+      else
+        'You are upgrading your Slugeasy account. Since you are upgrading
+         to a pay account, we will need your secure credit card details so we can
+         bill you $24/month for the new plan. The upgrade will be effective immediately.
+          You\'ll have access to your new features today.'
+      end
+    end
 end

@@ -24,7 +24,7 @@ class UserSessionsController < ApplicationController
         @profile = Profile.new(:user_id=>@user.id)
         @profile.save
 				flash[:notice] = "Welcome! As a new user, please review your registration details before continuing.."
-				redirect_to edit_user_path( :current )
+				redirect_to show_user_path(current_user.username)
 			else
 				if @user_session.registration_complete?
 					flash[:notice] = "Successfully signed in."

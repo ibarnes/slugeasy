@@ -1,8 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
   <head>
-    <title><%= h(yield(:title) || "SlugEasy: the easiest way to slug") %></title>
+    <title>
+<%= h(yield(:title) || "SlugEasy: the easiest way to slug") %></title>
 
     <%= stylesheet_link_tag 'application' %>
     <%= yield(:head) %>
@@ -12,7 +13,7 @@
   <body>
     <div id="header">
       <div id="logo">
-        <img src="/images/slug.png" >
+        <%=  link_to image_tag('/images/slug.png'), "/" %>
       </div>
       <div id="nav_container">
         <div id="site_nav">
@@ -20,21 +21,24 @@
             <%= link_to current_user.username,show_user_path(current_user.username) %> |
             <%=link_to "Messages ("+current_user.messages_recieved.size.to_s+")", inbox_path%> |
             <%= link_to 'Settings', edit_profile_path(Profile.find_by_user_id(current_user.id)) %>
-            <%end%>
-            </div>
-        
-        <div id="user_nav">
-            <%= link_to "Needs", root_path %> |
-          <%= link_to "Rules", rules_path %> |
-          <% if !current_user %> 
-          <%= link_to "Register/Pricing", upgrade_path %> |
-          <%= link_to "Sign in", signin_path %>
           <%end%>
+        </div>
+        <div id="user_nav">
+          <%= link_to "Needs", root_path %> |
+          <%= link_to "Rules", rules_path %> |
+          <% unless current_user %>
+            <%= link_to "Register/Pricing", signup_path %> |
+            <%= link_to "Sign in", signin_path %>
+          <%end%>
+            
           <% if current_user %>
-            <%= link_to "Log Out", signout_path %> |
-            <%=link_to 'Upgrade','/account/upgrade', :style=>"color:#FF0000;" %>
+            <%= link_to "Log Out", signout_path %> 
+            <%if current_user_plan == 'Free' || current_user_plan == 'Basic' %>|
+             <%=link_to 'Upgrade','/account/upgrade', :style=>"color:#FF0000;" %>
+            
+            <%end%>
           <% end %>
-         
+
         </div>
 
       </div>
@@ -42,14 +46,14 @@
     </div>
     <div id="container">
 
-<%- flash.each do |name, msg| -%>
-  <%= content_tag :div, msg, :id => "flash_#{name}" %>
-<%- end -%>
+      <%- flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <%- end -%>
 
-     <%if yield(:left_container)%><div id="left_panel_container"><%= yield :left_container%></div><%end%>
+      <%if yield(:left_container)%><div id="left_panel_container"><%= yield :left_container%></div><%end%>
       <%if yield(:right_container)%><div id="right_panel_container"><%= yield :right_container%></div><%end%>
       <%= yield %><div class="clear"></div>
-      
+
     </div>
   </body>
 </html>

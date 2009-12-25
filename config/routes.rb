@@ -25,6 +25,7 @@ ActionController::Routing::Routes.draw do |map|
   map.root :posts 
   map.contact "/message/new/:id", :controller=>'messages', :action=>'new'
   map.upgrade "/account/upgrade", :controller=>'users', :action=>'upgrade'
+  map.signup "/account/signup", :controller=>'users', :action=>'signup'
   map.show_user ':slug', :controller => 'profiles', :action => 'show'
   map.connect ':slug', :controller => 'profiles', :action => 'show'
   map.newbasic '/users/new/basic', :controller=>'users',:action=>'basic'

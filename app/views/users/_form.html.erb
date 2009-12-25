@@ -1,45 +1,62 @@
 <% form_for @user do |f| %>
   <%= f.error_messages %>
-  <h4>1. Enter your information</h4>
-  <div class="rule"></div>
+  <%if @upgrade%>
+    <b><%=@upgrade%></b>
+  <%end%>
 
-  <%fields_for @order do |o| %>
-    <p>
-      <%= o.error_messages %>
+  <%unless @upgrade%>
+    <h4>1. Enter your information</h4>
+    <div class="rule"></div>
+
+    <%fields_for @order do |o| %>
+      <p>
+        <%= o.error_messages %>
+        <%= o.hidden_field :plancode, :value=>@plan %>
+      </p>
+
+      <p>
+        <%= o.label :firstname %><br />
+        <%= o.text_field :firstname %>
+      </p>
+      <p>
+        <%= o.label :lastname %><br />
+        <%= o.text_field :lastname %>
+      </p>
+
+    <%end%>
+  <%else%>
+    <%fields_for @order do |o| %>
+      <%= o.hidden_field :firstname %>
+      <%= o.hidden_field :lastname %>
+      <%= o.hidden_field :id%>
       <%= o.hidden_field :plancode, :value=>@plan %>
+    <%end%>
+  <%end%>
+  <%unless @user.id%>
+    <p>
+      <%= f.label :username %><br />
+      <%= f.text_field :username %>
+    </p>
+    <p>
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </p>
+    <h4>2. Enter your password</h4>
+    <div class="rule"></div>
+    <p>
+      <%= f.label :password %><br />
+      <%= f.password_field :password %>
     </p>
 
     <p>
-      <%= o.label :firstname %><br />
-      <%= o.text_field :firstname %>
-    </p>
-    <p>
-      <%= o.label :lastname %><br />
-      <%= o.text_field :lastname %>
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation %>
     </p>
   <%end%>
-  <p>
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
-  </p>
-  <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </p>
-  <h4>2. Enter your password</h4>
-  <div class="rule"></div>
-  <p>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </p>
   <%if @paid%>
     <%fields_for @order do |o| %>
-  
-      <h4>3. Enter Your Credit Card information</h4>
+
+      <%unless @upgrade%> <h4>3. Enter Your Credit Card Details</h4><%end%>
       <div class="rule"></div>
       <p>
         <%= o.label :card_number %><br />
@@ -75,5 +92,5 @@
       <% end %>
     <% end %>
   </p>
-  <p><%= f.submit "Create Account" %></p>
+  <p><%unless @upgrade%><%= f.submit "Create Account" %><%else%><%= f.submit "Upgrade Account" %><%end%></p>
 <%end%>

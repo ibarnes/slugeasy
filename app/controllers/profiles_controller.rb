@@ -59,6 +59,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1/edit
   def edit
     @profile = Profile.find(params[:id])
+    @order = Order.find_by_user_id(current_user.id)
      @post = Post.new
     @user =
     #@profile = Profile.find_by_user_id(User.find_by_username(params[:slug]).id)
