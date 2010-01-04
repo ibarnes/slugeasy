@@ -8,17 +8,20 @@
         needs a <%=getneed(post.need) %>
         <%if post.time != nil%>at <%= post.time %><%end%> from <%=post.fr_location %>
         to <%=post.to_location %><br> <span>posted <%= distance_of_time_in_words_to_now(post.updated_at)%> ago
-          <% if current_user
+          <%
+          if current_user
             if current_user != User.find(post.user_id)
-             if post_limit
-            %>
+              if post_limit(get_message_limit(current_user.order.plancode))
+              %>
 
-              <%=  link_to 'Contact', contact_path(post.user_id) %>
-            <%else
-            %> Reached Message Limit - <%=link_to "Upgrade","#"%>
-            <%end end %>
+                <%=  link_to 'Contact', contact_path(post.user_id) %>
+              <%
+              else
+              %> Reached Message Limit - <%=link_to "Upgrade to Contact",upgrade_path%>
+              <%end %>
+            <%end %>
           <%end%>
-          <%# link_to 'View', post %>
+  <%# link_to 'View', post %>
           <%if current_user%>
             <% if current_user.id == post.user_id %>
               <%= link_to 'Edit', edit_post_path(post) %> |

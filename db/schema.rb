@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(:version => 20091225001214) do
     t.string   "current_login_ip"
     t.string   "photo_url"
     t.string   "account_type"
+    
   end
 
   add_index "users", ["rpx_identifier"], :name => "index_users_on_rpx_identifier"

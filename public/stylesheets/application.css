@@ -75,6 +75,7 @@ a {
 
 #billboard li{
     list-style:none;
+    
 }
 
 
@@ -247,7 +248,7 @@ form input.text{
 /* Main Content */
 #header {
     padding:0 0 0 0;
-    width: 1060px;
+    width: 1000px;
     margin: 2px auto 0 auto;
 }
 
@@ -312,11 +313,12 @@ form input.text{
     height:100%;
     margin: 10px auto 0 auto;
     background-color: #FFF;
-    padding: 5px 40px;
+    padding: 5px 10px;
     border: solid 1px #ccc;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
 }
+
 #flash_notice, #flash_warning {
     padding: 5px 8px;
     margin: 10px 0;
@@ -357,17 +359,34 @@ form input.text{
 
 #right_panel_container {
 
-    width:180px;
+    width:190px;
     margin: 0px;
     padding: 0px;
     float:right;
-
-
+   
 }
+
 #right_panel_container span {
 
     padding:10px 0 0 0;
     font-weight:700;
+}
+
+#benefits {
+    
+    list-style:none;
+    list-style-position: outside;
+    padding: 10px 0 0 0;
+    margin: 0px ;
+    font-size:14px;
+    line-height:20px;
+    
+    background-color:#fff;
+}
+#benefits li{
+    line-height:30px;
+    font-size:16px;
+    border-bottom:1px dashed #ebebeb;
 }
 
 /* Search */
@@ -417,7 +436,21 @@ form input.text{
 }
 
 
+/* Footer */
 
+#footer{
+
+    text-align:center;
+    width: 960px;
+    height:100%;
+    margin: 10px auto 0 auto;
+    background-color: #FFF;
+    padding: 5px 10px;
+    border: solid 1px #ccc;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+
+}
 
 /* New post form*/
 

@@ -36,6 +36,7 @@ class MessagesController < ApplicationController
   def new
     @messages = Message.new
     @user = User.find(params[:id])
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @messages }
@@ -51,9 +52,12 @@ class MessagesController < ApplicationController
   # POST /messages.xml
   def create
     @messages = Message.new(params[:message])
-
+    
+    @user = User.find(@messages.receiver_id)
+    @messages.sender_id = current_user.id
     respond_to do |format|
       if @messages.save
+        Notifier.deliver_new_message(@user,@messages,current_user)
         flash[:notice] = 'Messages was successfully created.'
         format.html { redirect_to(@messages) }
         format.xml  { render :xml => @messages, :status => :created, :location => @messages }

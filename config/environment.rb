@@ -22,6 +22,7 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'authlogic', :version => '>= 2.1.1'
+ # config.gem 'josevalim-auth_helpers', :source => 'http://gems.github.com'
   config.gem 'rpx_now', :version => '>= 0.6.6', :source => 'http://gemcutter.org'
   config.gem 'authlogic_rpx', :version => '>= 1.0.4', :source => 'http://gemcutter.org'
   config.gem "friendly_id"

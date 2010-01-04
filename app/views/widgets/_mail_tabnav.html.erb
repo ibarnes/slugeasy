@@ -19,7 +19,7 @@ render_tabnav :mail,
   # add tabs one by one as shown below
  # controller_names.each do |name|
     add_tab do |t|
-      t.named 'Messages (' + current_user.messages_recieved.size.to_s + ')'
+      t.named 'Inbox (' + current_user.messages_recieved.size.to_s + ')'
       t.titled "Inbound Mail"
       #t.links_to :controller => 'messages', :action=>'index'
       t.links_to inbox_path

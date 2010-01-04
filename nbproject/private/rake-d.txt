@@ -1,4 +1,5 @@
 db\:abort_if_pending_migrations=Raises an error if there are pending migrations
+db\:auto\:migrate=Use schema.rb to auto-migrate
 db\:charset=Retrieves the charset for the current environment's database
 db\:collation=Retrieves the collation for the current environment's database
 db\:create=Create the database defined in config/database.yml for the current RAILS_ENV
@@ -17,6 +18,8 @@ db\:reset=Drops and recreates the database from db/schema.rb for the current env
 db\:rollback=Rolls the schema back to the previous version. Specify the number of steps with STEP=n
 db\:schema\:dump=Create a db/schema.rb file that can be portably used against any DB supported by AR
 db\:schema\:load=Load a schema.rb file into the database
+db\:schema\:to_migration=Create migration from schema.rb
+db\:schema\:to_migration_with_reset=Create migration from schema.rb and reset migrations log
 db\:seed=Load the seed data from db/seeds.rb
 db\:sessions\:clear=Clear the sessions table
 db\:sessions\:create=Creates a sessions migration for use with ActiveRecord::SessionStore
@@ -42,6 +45,7 @@ doc\:clobber_rails=Remove rdoc products
 doc\:guides=Generate Rails guides
 doc\:plugins=Generate documentation for all installed plugins
 doc\:plugins\:auto_complete=Generate documentation for the auto_complete plugin
+doc\:plugins\:auto_migrations=Generate documentation for the auto_migrations plugin
 doc\:plugins\:rails-widgets=Generate documentation for the rails-widgets plugin
 doc\:rails=Build the RDOC HTML Files
 doc\:reapp=Force a rebuild of the RDOC files

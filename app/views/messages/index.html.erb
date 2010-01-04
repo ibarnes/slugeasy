@@ -16,9 +16,14 @@
       <li>
         <%= link_to image_tag(@user.gravatar_url(:size=>"40")), show_user_path(@user.username) %>
         <div class="post_message_container">
-          <%= link_to message.body[0...100], message  %> <br><br>
+          <%= message.body  %> <br><br>
           <span>posted <%= distance_of_time_in_words_to_now(message.created_at) %></span>
-          <%=link_to pluralize(message.comments.size, 'Comment'), message %>
+          <% unless params[:is_sent]   %>
+            <%= link_to 'Reply', contact_path(@user.id) %> |
+          <%end%>
+          <%#  link_to pluralize(message.comments.size, 'Comment'), message %>
+          <%=  link_to 'Delete', message, :confirm => 'Are you sure?', :method => :delete %>
+           
         </div>
         <div class="clear"></div>
       </li>
@@ -30,5 +35,5 @@
 
 <%end%>
 <%content_for :right_container do%>
- <%= render :partial=>'upgrade' %>
- <%end%>
+  <%= render :partial=>'upgrade' %>
+<%end%>

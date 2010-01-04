@@ -3,7 +3,7 @@
 <html>
   <head>
     <title>
-<%= h(yield(:title) || "SlugEasy: the easiest way to slug") %></title>
+    <%= h(yield(:title) || "SlugEasy: the easiest way to slug") %></title>
 
     <%= stylesheet_link_tag 'application' %>
     <%= yield(:head) %>
@@ -26,16 +26,17 @@
         <div id="user_nav">
           <%= link_to "Needs", root_path %> |
           <%= link_to "Rules", rules_path %> |
+          <%= link_to "FAQ", faq_path %> |
           <% unless current_user %>
             <%= link_to "Register/Pricing", signup_path %> |
             <%= link_to "Sign in", signin_path %>
           <%end%>
-            
+
           <% if current_user %>
-            <%= link_to "Log Out", signout_path %> 
+            <%= link_to "Log Out", signout_path %>
             <%if current_user_plan == 'Free' || current_user_plan == 'Basic' %>|
-             <%=link_to 'Upgrade','/account/upgrade', :style=>"color:#FF0000;" %>
-            
+              <%=link_to 'Upgrade','/account/upgrade', :style=>"color:#FF0000;" %>
+
             <%end%>
           <% end %>
 
@@ -55,5 +56,7 @@
       <%= yield %><div class="clear"></div>
 
     </div>
+
+    <div id="footer">About Us | Blog | Contact Us | FAQ | Terms and Conditions | Privacy </div>
   </body>
 </html>

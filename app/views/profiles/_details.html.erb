@@ -1,42 +1,46 @@
-    <h1><%=@user.username%></h1>
-    <%= image_tag @user.gravatar_url(:size=>'100'), :align=>'top' %>
-    <br><br>
-    <%=@profile.description%>
-    
-  <%if current_user%>
+<h1><%=@user.username%></h1>
+<%= image_tag @user.gravatar_url(:size=>'100'), :align=>'top' %>
+<br><br>
+<%=@profile.description%>
 
-      <%if current_user.relationships.find_by_follower_id(@user.id) == nil && @user != current_user%>
+<%if current_user%>
 
-        <%=link_to "Follow", relationships_path(:follower_id =>@user.id), :method=> :post   %><br>
-      <%else%>
-        <%=@user == current_user ? "" : "Following "%>
-      <%end%>
-    <%end%><br><br> <span>Listings</span><br>
-    <b> <%=Post.find_all_by_user_id(@user.id).size%></b><br><br>
+  <%if current_user.relationships.find_by_follower_id(@user.id) == nil && @user != current_user%>
 
-    <%if @profile.start_time && @profile.end_time%>
-      <b>Commute Time</b><br><br>
-      <%=@profile.start_time%> - <%=@profile.end_time%><br><br>
-    <%end%>
-     <%if @profile.music_preference%>
-      <b>Music Preference</b><br><br>
-      <%=get_musicpreference(@profile.music_preference)%><br><br>
-    <%end%>
-      <%if @profile.noise_preference%>
-      <b>Music Preference</b><br><br>
-      <%=get_noisepreference(@profile.noise_preference)%><br><br>
-    <%end%>
-    <span>Following</span><br><br>
-    <%  for relationship in @user.relationships  %>
-      <%=link_to image_tag(relationship.follower.gravatar_url(:size=>"40")), show_user_path(relationship.follower.username) %>
-      <%# link_to 'remove', relationship, :method => :delete %>
-    <%end%>
-    <br><br>
+    <%=link_to "Follow", relationships_path(:follower_id =>@user.id), :method=> :post   %><br>
+  <%else%>
+    <%=@user == current_user ? "" : "Following "%>
+  <%end%>
+<%end%><br><br> <span>Listings</span><br>
+ <%=Post.find_all_by_user_id(@user.id).size%><br><br>
 
-    <span>Followers</span><br><br>
+<%if @profile.start_time && @profile.end_time%>
+  <b>Commute Time</b><br><br>
+  <%=@profile.start_time%> - <%=@profile.end_time%><br><br>
+<%end%>
+<%if @profile.music_preference%>
+  <b>Music Preference</b><br><br>
+  <%=get_musicpreference(@profile.music_preference)%><br><br>
+<%end%>
+<%if @profile.noise_preference%>
+  <b>Music Preference</b><br><br>
+  <%=get_noisepreference(@profile.noise_preference)%><br><br>
+<%end%>
+<span>Following</span><br>
+<%if @user.relationships.size > 0%>
+  <%  for relationship in @user.relationships  %>
+    <%=link_to image_tag(relationship.follower.gravatar_url(:size=>"40")), show_user_path(relationship.follower.username) %>
+    <%# link_to 'remove', relationship, :method => :delete %>
+  <%end%>
+<%else%>0
+<%end%>
+<br><br>
 
-    <%  for user in @user.inverse_followers %>
-      <%=link_to image_tag(user.gravatar_url(:size=>"40")), show_user_path(user.username) %>
-    <%end%>
-    <br><br>
- 
+<span>Followers</span><br>
+<%if @user.inverse_followers.size > 0%>
+  <%  for user in @user.inverse_followers %>
+    <%=link_to image_tag(user.gravatar_url(:size=>"40")), show_user_path(user.username) %>
+  <%end%>
+<%else%>0<br>
+<%end%>
+<br><br>

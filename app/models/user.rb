@@ -1,8 +1,18 @@
 class User < ActiveRecord::Base
+
+ # include AuthHelpers::Model::Confirmable
+ # include AuthHelpers::Model::Recoverable
+ # include AuthHelpers::Model::Updatable
   is_gravtastic! :size => 40
 	acts_as_authentic do |c|
 		#c.map_id = false
+   # c.validations_scope = :accountable_type
+    #c.require_password_confirmation = false
+
 	end
+
+
+   
 	attr_accessible :username, :email, :password, :password_confirmation, :rpx_identifier
 
 	validates_uniqueness_of   :username, :case_sensitive => false
@@ -31,7 +41,7 @@ class User < ActiveRecord::Base
 
   
   
-private
+  private
 
 	# map_added_rpx_data maps additional fields from the RPX response into the user object during the "add RPX to existing account" process.
 	# Override this in your user model to perform field mapping as may be desired

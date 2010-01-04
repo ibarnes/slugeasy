@@ -12,17 +12,27 @@ class CommentsController < ApplicationController
   end
   
   def new
-	@message = Message.find(params[:message_id])
+    @message = Message.find(params[:message_id])
     @comment = Comment.new
-	@comment.message = @message
+    @comment.message = @message
   end
   
   def create
     @message = Message.find(params[:message_id])
     @comment = Comment.new(params[:comment])
     @comment.user_id = current_user.id
-	@comment.message = @message
+    @comment.message = @message
+    @user = User.find(@message.sender_id)
+
     if @comment.save
+      if(@message.sender_id != current_user.id)
+        Notifier.deliver_new_comment(@user,@comment,current_user)
+      end
+
+      if(Comment.find_all_by_message_id(@message.id).initialize)
+        
+      end
+
       flash[:notice] = "Successfully created comment."
       redirect_to message_path(@message)
     else

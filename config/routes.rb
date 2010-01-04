@@ -20,6 +20,8 @@ ActionController::Routing::Routes.draw do |map|
   map.drivers "drivers", :controller=>"posts", :action =>"drivers"
   map.pasangers "passengers", :controller=>"posts", :action =>"passengers"
   map.rules "/home/rules", :controller=>"home", :action =>"rules"
+  map.faq "/home/faq", :controller=>"home", :action =>"faq"
+
   map.inbox "/messages?is_inbox=true", :controller=>"messages", :action=>"index"
   map.sent "/messages?is_sent=true", :controller=>"messages", :action=>"index"
   map.root :posts 

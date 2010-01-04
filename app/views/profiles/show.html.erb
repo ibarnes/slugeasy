@@ -1,31 +1,37 @@
 <%content_for :left_container do%>
 
-    <%if current_user == @user%>
-      <%- form_for(@post) do |f|-%>
+  <%if current_user == @user
 
-        <div id="new_post_form">
-          
-          <h3>What's your need?</h3>
+    #if current_user.order != nil
+      if post_limit(get_message_limit(current_user.order.plancode))
+     
+      %>
 
+        <%- form_for(@post) do |f|-%>
 
-          Your Need <%= select(:post, :need, [['Ride', 1], ['Rider', 2]]) %>
-          Time <%= select :post, :time, gettimes, :size =>'6' %>
-          From <%=  text_field_with_auto_complete :post, :fr_location, {:size => 15 }, { :url => formatted_locations_path(:js), :method=>:get, :with => "'search=' + element.value"}  %>
+          <div id="new_post_form">
+            <h3>What's your need?</h3>
+            Your Need <%= select(:post, :need, [['Ride', 1], ['Rider', 2]]) %>
+            Time <%= select :post, :time, gettimes, :size =>'6' %>
+            From <%=  text_field_with_auto_complete :post, :fr_location, {:size => 15 }, { :url => formatted_locations_path(:js), :method=>:get, :with => "'search=' + element.value"}  %>
           <%# f.text_field :fr_location,:size => '15'%>
-          To <%= text_field_with_auto_complete :post, :to_location, {:size => 15 }, { :url => formatted_locations_path(:js), :method=>:get, :with => "'search=' + element.value"}  %>
+            To <%= text_field_with_auto_complete :post, :to_location, {:size => 15 }, { :url => formatted_locations_path(:js), :method=>:get, :with => "'search=' + element.value"}  %>
           <%# f.text_field :to_location,:size => '15'%>
-          <%= f.submit 'Create', :class=>'submit' %>
-        </div>
-      <%- end-%>
-    <% end%>
-    <br><br>
+            <%= f.submit 'Create', :class=>'submit' %>
+          </div>
+        <%- end-%>
+      <% end
+     # end
+      end
+      %>
+      <br><br>
 
-    <%= render :partial=>'posts/posts', :locals=>{:posts=>@posts} %>
-  
-<%end%>
+      <%= render :partial=>'posts/posts', :locals=>{:posts=>@posts} %>
 
-<%content_for :right_container do%>
-  
+    <%end%>
 
-  <%=render :partial=>'details', :locals=>{:user=> @user}%>
-<%end%>
+    <%content_for :right_container do%>
+
+
+      <%=render :partial=>'details', :locals=>{:user=> @user}%>
+    <%end%>
