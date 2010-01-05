@@ -34,7 +34,25 @@ class ApplicationController < ActionController::Base
       return @order.plancode
   end
 
+def logged_in?
+    current_user
+  end
 
+  def profile_owner?
+    if logged_in?
+      @profile = Profile.find(params[:id])
+      @profile.user_id == current_user.id
+    end
+  end
+
+  def authorize_profile_owner
+    unless logged_in? && profile_owner?
+      flash[:error] = "Unauthorized access"
+      redirect_to root_url
+
+    end
+  end
+  
     def require_user
       unless current_user
         store_location

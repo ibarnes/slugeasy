@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-
+before_filter :authorize_profile_owner, :only => :edit
   # GET /profiles
   # GET /profiles.xml
   def index
